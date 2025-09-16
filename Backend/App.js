@@ -16,12 +16,13 @@ app.use(express.json())
 app.use("/", userRouter)
 const server = http.createServer(app);
 const startSocket = require("./Utils/Socket.js");
+const port = process.env.Port || 5491;
 
 startSocket(server)
 connectDb().then(() => {
 console.log("Database connected succesfully")
-server.listen(5491, () => {
-  console.log("Server is listening on port 8000...")
+server.listen(port, () => {
+  console.log("Server is listening on port 5491...")
 })
   
 })
