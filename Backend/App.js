@@ -16,7 +16,7 @@ app.use(express.json())
 app.use("/", userRouter)
 const server = http.createServer(app);
 const startSocket = require("./Utils/Socket.js");
-const port = process.env.Port || 5491;
+const port = process.env.PORT || 5491;
 
 startSocket(server)
 connectDb().then(() => {
