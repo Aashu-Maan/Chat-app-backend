@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser")
 
 const app = express();
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://chat-app-frontend-cj6o.vercel.app",
   credentials: true
 }))
 app.use(cookieParser())
