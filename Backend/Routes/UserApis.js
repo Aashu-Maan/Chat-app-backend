@@ -36,31 +36,39 @@ userRouter.post("/login", async (req, res) => {
     const isUser = await userSchema.findOne({ emailId });
 
     if (!isUser) {
-      return res.json({ message: "No user found" });
+      return res.status(400).json({ message: "No user found" });
     }
 
     if (!password) {
-      return res.json({ message: "Please enter password" });
+      return res.status(400).json({ message: "Please enter password" });
     }
-    if (isUser.password === password) {
-      
-    const token = jwt.sign({id: isUser._id}, "aashu@2000", {expiresIn: "1h"})
-    res.cookie("token", token)
-      return res.json({ 
-        message: "user loggedIn",
-        User: isUser,
 
+    if (isUser.password === password) {
+      const token = jwt.sign(
+        { id: isUser._id },
+        "aashu@2000",
+        { expiresIn: "1h" }
+      );
+
+      // ✅ set cookie with proper options
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "none",
+        maxAge: 60 * 60 * 1000
+      });
+
+      return res.json({
+        message: "User logged in",
+        User: isUser,
       });
     } else {
-      return res.json({ message: "Password not matched" });
+      return res.status(400).json({ message: "Password not matched" });
     }
-    
-    
   } catch (error) {
-    res.json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 });
-
 userRouter.get("/users", userAuth, async (req, res) => {
   const loggedInUser = req.user;
   try {
