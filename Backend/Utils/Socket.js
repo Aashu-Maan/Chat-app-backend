@@ -16,7 +16,7 @@ io.on("connection", (socket) => {
 })
 }
 module.exports = startSocket; 
-
+https://chat-app-frontend-cj6o.vercel.app
 */
 
 const { Server } = require("socket.io");
@@ -24,7 +24,7 @@ const userSchema = require("../Modules/Users.js");
 const startSocket = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: "https://eloquent-peony-e07ada.netlify.app",
       methods: ["GET", "POST"],
     },
   });
