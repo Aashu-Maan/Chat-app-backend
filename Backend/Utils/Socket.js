@@ -24,7 +24,7 @@ const userSchema = require("../Modules/Users.js");
 const startSocket = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: "https://eloquent-peony-e07ada.netlify.app",
+      origin: "https://spectacular-marigold-1e1f9d.netlify.app",
       methods: ["GET", "POST"],
     },
   });
