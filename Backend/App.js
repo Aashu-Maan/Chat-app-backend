@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser")
 
 const app = express();
 app.use(cors({
-  origin: "https://eloquent-peony-e07ada.netlify.app",
+  origin: true,
   credentials: true
 }))
 app.use(cookieParser())
