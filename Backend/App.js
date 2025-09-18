@@ -4,10 +4,10 @@ const userRouter = require("./Routes/UserApis.js");
 const cors = require("cors");
 const http = require("http");
 const cookieParser = require("cookie-parser")
-
+//"https://eloquent-peony-e07ada.netlify.app",
 const app = express();
 app.use(cors({
-  origin: true,
+  origin: "https://spectacular-marigold-1e1f9d.netlify.app",
   credentials: true
 }))
 app.use(cookieParser())
